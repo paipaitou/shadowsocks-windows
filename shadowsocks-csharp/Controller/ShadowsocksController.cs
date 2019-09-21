@@ -28,7 +28,6 @@ namespace Shadowsocks.Controller
         private Thread _trafficThread;
 
         private Listener _listener;
-        private PACDaemon _pacDaemon;
         private PACServer _pacServer;
         private Configuration _config;
         private StrategyManager _strategyManager;

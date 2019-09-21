@@ -166,3 +166,15 @@ Error occured when process proxy setting, do you want reset current setting and 
 Unrecoverable proxy setting error occured, see log for detail=发生不可恢复的代理设置错误，查看日志以取得详情
 Auth user can not be blank=认证用户不能为空
 Auth pwd can not be blank=认证密码不能为空
+
+## SSD
+
+# Menu item
+Tcping Latency=Tcping 延迟
+
+# Server
+
+Unknown=未知
+Testing=测试中
+Pending=队列中
+Error=失败

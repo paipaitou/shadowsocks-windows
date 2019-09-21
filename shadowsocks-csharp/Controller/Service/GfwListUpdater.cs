@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -47,9 +47,9 @@ namespace Shadowsocks.Controller
 
         public static bool MergeAndWritePACFile(string gfwListResult)
         {
-            string abpContent = MergePACFile(gfwListResult);
+            string abpContent = MergePACFile(gfwListResult);            
             if (File.Exists(PACDaemon.PAC_FILE))
-            {
+            {               
                 string original = FileManager.NonExclusiveReadAllText(PACDaemon.PAC_FILE, Encoding.UTF8);
                 if (original == abpContent)
                 {
@@ -90,7 +90,7 @@ namespace Shadowsocks.Controller
         public void UpdatePACFromGFWList(Configuration config)
         {
             Logging.Info($"Checking GFWList from {GFWLIST_URL}");
-            WebClient http = new WebClient();
+            WebClient http = new WebClient()
             if (config.enabled)
             {
                 http.Proxy = new WebProxy(

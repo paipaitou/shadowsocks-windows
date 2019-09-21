@@ -7,7 +7,7 @@ using Shadowsocks.Controller;
 namespace Shadowsocks.Model
 {
     [Serializable]
-    public class Configuration
+    public partial class Configuration
     {
         public string version;
 

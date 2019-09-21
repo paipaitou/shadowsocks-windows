@@ -154,3 +154,15 @@ Cannot parse hotkey: {0}=剖析快速鍵失敗: {0}
 Timeout is invalid, it should not exceed {0}=逾時無效，不應超過 {0}
 Auth user can not be blank=認證用戶不能為空
 Auth pwd can not be blank=認證口令不能為空
+
+## SSD
+
+# Menu item
+Tcping Latency=Tcping 延遲
+
+# Server
+
+Unknown=未知
+Testing=測試中
+Pending=隊列中
+Error=錯誤

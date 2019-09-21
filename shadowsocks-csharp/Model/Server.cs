@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 namespace Shadowsocks.Model
 {
     [Serializable]
-    public class Server
+    public partial class Server
     {
         #region ParseLegacyURL
         public static readonly Regex

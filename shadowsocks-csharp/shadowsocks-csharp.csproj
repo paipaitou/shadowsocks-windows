@@ -225,6 +225,9 @@
     <Compile Include="View\StatisticsStrategyConfigurationForm.Designer.cs">
       <DependentUpon>StatisticsStrategyConfigurationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="_Tcping\Controller\MenuViewPlusController.cs" />
+    <Compile Include="_Tcping\Model\Configuration.cs" />
+    <Compile Include="_Tcping\Model\ServerPlus.cs" />
     <EmbeddedResource Include="View\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
       <SubType>Designer</SubType>

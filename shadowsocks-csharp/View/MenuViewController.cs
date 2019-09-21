@@ -18,7 +18,7 @@ using System.Windows.Interop;
 
 namespace Shadowsocks.View
 {
-    public class MenuViewController
+    public partial class MenuViewController
     {
         // yes this is just a menu view controller
         // when config form is closed, it moves away from RAM
@@ -71,7 +71,7 @@ namespace Shadowsocks.View
 
         public MenuViewController(ShadowsocksController controller)
         {
-            this.controller = controller;
+            this.controller = controller;            
 
             LoadMenu();
 
@@ -105,14 +105,17 @@ namespace Shadowsocks.View
 
             if (config.isDefault)
             {
-                _isFirstRun = true;
-                ShowConfigForm();
+                _isFirstRun = true;                
+                ShowConfigForm();                
             }
             else if (config.autoCheckUpdate)
             {
                 _isStartupChecking = true;
                 updateChecker.CheckUpdate(config, 3000);
             }
+            #region SSD
+            _InitOther();
+            #endregion
         }
 
         private void controller_TrafficChanged(object sender, EventArgs e)
@@ -293,6 +296,9 @@ namespace Shadowsocks.View
                 this.ServersItem = CreateMenuGroup("Servers", new MenuItem[] {
                     this.SeperatorItem = new MenuItem("-"),
                     this.ConfigItem = CreateMenuItem("Edit Servers...", new EventHandler(this.Config_Click)),
+                    #region SSD
+                    _CreateTcpingLatency(),
+                    #endregion
                     CreateMenuItem("Statistics Config...", StatisticsConfigItem_Click),
                     new MenuItem("-"),
                     CreateMenuItem("Share Server Config...", new EventHandler(this.QRCodeItem_Click)),
@@ -440,7 +446,7 @@ namespace Shadowsocks.View
         }
 
         private void UpdateServersMenu()
-        {
+        {            
             var items = ServersItem.MenuItems;
             while (items[0] != SeperatorItem)
             {
@@ -459,13 +465,18 @@ namespace Shadowsocks.View
             // user wants a seperator item between strategy and servers menugroup
             items.Add(i++, new MenuItem("-"));
 
-            int strategyCount = i;
-            Configuration configuration = controller.GetConfigurationCopy();
+            int strategyCount = i;            
+            #region SSD
+            Configuration configuration = _GetConfigurationCurrent();            
+            #endregion
             foreach (var server in configuration.configs)
             {
                 if (Configuration.ChecksServer(server))
                 {
                     MenuItem item = new MenuItem(server.FriendlyName());
+                    #region SSD
+                    item = _AdjustServerName(server);
+                    #endregion
                     item.Tag = i - strategyCount;
                     item.Click += AServerItem_Click;
                     items.Add(i, item);
